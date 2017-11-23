@@ -1,0 +1,7 @@
+---
+- name: install git
+  apt: pkg=git update_cache=yes cache_valid_time=3600
+  become: True
+
+- name: create script from template
+  template: src=".gitconfig.j2" dest="~/.gitconfig"

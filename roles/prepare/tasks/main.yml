@@ -1,0 +1,9 @@
+---
+- name: disable beep for bash
+  copy: content="set bell-style none" dest=~/.inputrc
+
+- name: disable beep for vim
+  copy: content="set visualbell t_vb=" dest=~/.vimrc
+
+- name: create directory for bin
+  file: path=~/bin state=directory

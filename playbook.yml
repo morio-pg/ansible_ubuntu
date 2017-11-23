@@ -1,0 +1,7 @@
+---
+- hosts: all
+  vars_files:
+    - vars/settings.yml
+  roles:
+    - prepare
+    - github
