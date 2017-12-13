@@ -9,6 +9,8 @@ WSL UbuntuにAnsibleでgithubの設定などを行えるようにしたPlaybook
 
 ### Roles
 - prepare（bash、vimのビープ音の制御など）
+- anyenv
+- node v8.9.3（ndenv）
 - ruby 2.4.1（rbenv）
 - git
 - github（ssh keyの登録）
