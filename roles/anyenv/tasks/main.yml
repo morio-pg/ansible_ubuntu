@@ -1,0 +1,16 @@
+---
+- name: install anyenv
+  git: repo=https://github.com/riywo/anyenv dest=~/.anyenv
+
+- name: add to environment variable
+  blockinfile:
+    dest: ~/.profile
+    content: |
+      PATH="$HOME/.anyenv/bin:$PATH"
+      eval "$(anyenv init -)"
+
+- name: create directory for anyenv plugins
+  file: path=~/.anyenv/plugins state=directory
+
+- name: install anyenv-update
+  git: repo=https://github.com/znz/anyenv-update.git dest=~/.anyenv/plugins/anyenv-update

@@ -16,17 +16,10 @@
     - libgdbm-dev
 
 - name: install rbenv
-  git: repo=https://github.com/sstephenson/rbenv.git dest=~/.rbenv
-
-- name: install ruby-build
-  git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
-
-- name: add to environment variable
-  blockinfile:
-    dest: ~/.profile
-    content: |
-      PATH="$HOME/.rbenv/bin:$PATH"
-      eval "$(rbenv init -)"
+  shell: "bash -lc 'echo N | anyenv install rbenv'"
+  register: result
+  failed_when: False
+  changed_when: result.rc == 0
 
 - name: install ruby
   shell: "bash -lc 'echo no | rbenv install {{ ruby_version }}'"
