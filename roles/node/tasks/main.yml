@@ -1,0 +1,16 @@
+---
+- name: install ndenv
+  shell: "bash -lc 'echo N | anyenv install ndenv'"
+  register: result
+  failed_when: False
+  changed_when: result.rc == 0
+
+- name: install node
+  shell: "bash -lc 'echo no | ndenv install {{ node_version }}'"
+  register: result
+  failed_when: False
+  changed_when: result.rc == 0
+
+- name: set default node version
+  shell: "bash -lc 'ndenv global {{ node_version }}'"
+  when: result.rc == 0
