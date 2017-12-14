@@ -5,6 +5,7 @@
 - name: add to environment variable
   blockinfile:
     dest: ~/.profile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for anyenv"
     content: |
       PATH="$HOME/.anyenv/bin:$PATH"
       eval "$(anyenv init -)"

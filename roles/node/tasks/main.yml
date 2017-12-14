@@ -14,3 +14,10 @@
 - name: set default node version
   shell: "bash -lc 'ndenv global {{ node_version }}'"
   when: result.rc == 0
+
+- name: add to environment variable
+  blockinfile:
+    dest: ~/.profile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK for node"
+    content: |
+      PATH="./node_modules/.bin:$PATH"
